@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import SERVERURL from "../ServerURL.jsx";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../components/BackButton.jsx";
 
 const AddBook = () => {
   const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ const AddBook = () => {
           onClick={handleSave}
         >
           Save
-        </button>
+        </button><BackButton />
       </div>
     </>
   );
