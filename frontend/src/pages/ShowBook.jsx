@@ -4,6 +4,7 @@ import SERVERURL from "../ServerURL.jsx";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
+import Spinner from "../components/Spinner.jsx";
 
 const ShowBook = () => {
   const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ const ShowBook = () => {
       <h1 className="text-3xl bg-sky-700 text-white p-4 text-center">
         Book Information
       </h1>
-      {loading ? <h2>Loading...</h2> : ""}
+      {loading ? <Spinner /> : ""}
       <div className="flex flex-col border-2 border-sky-300 rounded-sm w-[600px] p-4 mx-auto my-4">
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-600">Title</label>

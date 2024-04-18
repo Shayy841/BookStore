@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { MdAddBox } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Spinner from "../components/Spinner.jsx";
 
 const Home = () => {
   const [books, setBooks] = useState([]); //can store array objects 
@@ -32,7 +33,7 @@ const Home = () => {
         <Link to={"/books/create"}><MdAddBox className="text-4xl text-pink-600" /></Link>
         <div className="flex justify-between items-center">
           {loading ? (
-            <h3>Loading...</h3>
+            <Spinner />
           ) : (
             <table className="w-full border-separate border-spacing-2 ">
               <thead>
