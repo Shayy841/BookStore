@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
 import Spinner from "../components/Spinner.jsx";
+import { enqueueSnackbar } from "notistack";
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
@@ -39,9 +40,11 @@ const DeleteBook = () => {
       const resp = await axios.delete(`${SERVERURL}/book/${id}`, data);
       console.log(resp.data);
       setLoading(false);
+      enqueueSnackbar("Book Deleted Successfully", { variant: "success" });
       navigate("/");
     } catch (error) {
       console.log(error);
+      enqueueSnackbar("Error", { variant: "error" });
       setLoading(false);
     }
   };

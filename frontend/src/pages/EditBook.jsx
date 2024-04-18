@@ -4,6 +4,7 @@ import SERVERURL from "../ServerURL.jsx";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
+import { enqueueSnackbar } from "notistack";
 
 const EditBook = () => {
   const [loading, setLoading] = useState(false);
@@ -38,9 +39,11 @@ const EditBook = () => {
       const resp = await axios.put(`${SERVERURL}/book/${id}`, data);
       console.log(resp.data);
       setLoading(false);
+      enqueueSnackbar("Book Updated successfully", { variant: "success" });
       navigate("/");
     } catch (error) {
       console.log(error);
+      enqueueSnackbar("Error", { variant: "error" });
       setLoading(false);
     }
   };

@@ -4,6 +4,7 @@ import SERVERURL from "../ServerURL.jsx";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton.jsx";
 import Spinner from "../components/Spinner.jsx";
+import { enqueueSnackbar } from "notistack";
 
 const AddBook = () => {
   const [loading, setLoading] = useState(false);
@@ -18,9 +19,11 @@ const AddBook = () => {
       const resp = await axios.post(`${SERVERURL}/book`, data);
       console.log(resp.data);
       setLoading(false);
+      enqueueSnackbar("Book Added Successfully", { variant: "success" });
       navigate("/");
     } catch (error) {
       console.log(error);
+      enqueueSnackbar("Error", { variant: "error" });
       setLoading(false);
     }
   };
